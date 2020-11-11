@@ -28,15 +28,22 @@ public class Parser {
 		// Split input to parse easily
 		spInput = input.split(" ");
 		
+		// Is it a valid command?
 		for(int i=0; i < allCmds.length; i++) {
 			if(allCmds[i].equals(spInput[0])) {
 				cmd = spInput[0];
 				
+				// Are these valid arguments?
 				if(cmd.equals("ls") || cmd.equals("more") || cmd.equals("args") ||
 						cmd.equals("date") || cmd.equals("help") || cmd.equals("pwd") ||
 						cmd.equals("clear") || cmd.equals("exit")) {
 					if(spInput.length - 1 == 0)
 						return true;
+
+					else {
+						System.out.println("ERROR: WRONG ARGUMENTS!");
+						return false;
+					}
 				}
 				
 				else if(cmd.equals("cd") || cmd.equals("cat") || cmd.equals("mkdir") ||
@@ -47,6 +54,11 @@ public class Parser {
 						
 						return true;
 					}
+					
+					else {
+						System.out.println("ERROR: WRONG ARGUMENTS!");
+						return false;
+					}
 				}
 				
 				else if(cmd.equals("cp") || cmd.equals("mv")) {
@@ -56,11 +68,11 @@ public class Parser {
 						args[1] = spInput[2];
 						return true;
 					}
-				}
-				
-				else {
-					System.out.println("ERROR: WRONG ARGUMENTS!");
-					return false;
+					
+					else {
+						System.out.println("ERROR: WRONG ARGUMENTS!");
+						return false;
+					}
 				}
 				
 			}
@@ -69,6 +81,8 @@ public class Parser {
 		System.out.println("ERROR: UNKNOWN COMMAND!");
 		return false;
 	}
-	
+
+	public String getCmd() {return cmd;}
+	public String[] getArguments() {return args;}
 	
 }
