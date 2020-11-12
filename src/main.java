@@ -44,6 +44,10 @@ public class main {
 				case "pwd":
 					terminal.pwd();
 					break;
+					
+				case "exit":
+					terminal.exit();
+					break;
 				}
 				
 				
