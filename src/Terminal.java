@@ -1,5 +1,8 @@
 
 public class Terminal {
+	
+	private static String pwd = "C:\\"; // default
+	
 	public void cd(String path) {
 		
 	}
@@ -17,6 +20,6 @@ public class Terminal {
 	}
 	
 	public void pwd() {
-		
+		System.out.println(pwd);
 	}
 }
