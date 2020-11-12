@@ -46,9 +46,10 @@ public class Parser {
 					}
 				}
 				
-				else if(cmd.equals("cd") || cmd.equals("cat") || cmd.equals("mkdir") ||
+				else if(cmd.equals("cd") || cmd.equals("mkdir") ||
 						cmd.equals("rmdir") || cmd.equals("rm")) {
 					if(spInput.length - 1 == 1) {
+						// Storing arguments
 						args = new String[1];
 						args[0] = spInput[1];
 						
@@ -63,6 +64,7 @@ public class Parser {
 				
 				else if(cmd.equals("cp") || cmd.equals("mv")) {
 					if(spInput.length - 1 == 2) {
+						// Storing arguments
 						args = new String[2];
 						args[0] = spInput[1];
 						args[1] = spInput[2];
@@ -71,6 +73,23 @@ public class Parser {
 					
 					else {
 						System.out.println("ERROR: " + cmd + " requires 2 arguments!");
+						return false;
+					}
+				}
+				
+				else if(cmd.equals("cat")) {
+					if(spInput.length - 1 >= 1) {
+						args = new String[spInput.length - 1];
+						
+						// Storing arguments
+						for(int j=0; j < spInput.length - 1; j++)
+							args[j] = spInput[j+1];
+
+						return true;
+					}
+					
+					else {
+						System.out.println("ERROR: " + cmd + " requires atleast 1 argument!");
 						return false;
 					}
 				}
