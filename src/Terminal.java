@@ -1,6 +1,7 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Path;
+import java.util.Scanner;
 
 public class Terminal {
 	
@@ -57,8 +58,36 @@ public class Terminal {
         }
 	}
 	
-	public void cat(String[] paths) {
+	public void cat(String[] paths) throws FileNotFoundException {
+		Scanner reader = null;
+		String data;
 		
+		// Iterating through each file
+		for(int i=0; i < paths.length; i++) {
+			file = new File(paths[i]);
+			
+			// Resolving relative files
+			if( !(file.isAbsolute()) )
+				file = new File(pwd + "\\" + paths[i]);
+				
+			
+			// Checking if it's a file and it exists
+			if(file.exists() && file.isFile()) {
+				
+				reader = new Scanner(file);
+				
+				// Reading the file line by line and printing
+				while(reader.hasNextLine()) {
+					data = reader.nextLine();
+					System.out.println(data);
+				}
+				
+			} else {
+				System.out.println("ERROR: " + file.getName() + " file doesn't exists!");
+			}
+			
+			
+		}
 	}
 	
 	public void rm(String sourcePath) {
