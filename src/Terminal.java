@@ -41,7 +41,20 @@ public class Terminal {
 	}
 	
 	public void ls() {
+		File[] files = new File(pwd).listFiles();
 		
+		for (int i=0; i < files.length; i++) {
+			
+			// Don't print hidden files
+			if(files[i].isHidden()) continue;
+
+			// Print files and concatenate a slash if directory
+			System.out.print(files[i].getName());
+			if(files[i].isDirectory())
+				System.out.print("\\");
+			
+			System.out.print("\n");	
+        }
 	}
 	
 	public void cat(String[] paths) {
