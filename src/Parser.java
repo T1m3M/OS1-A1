@@ -41,7 +41,7 @@ public class Parser {
 						return true;
 
 					else {
-						System.out.println("ERROR: WRONG ARGUMENTS!");
+						System.out.println("ERROR: " + cmd + " requires no arguments!");
 						return false;
 					}
 				}
@@ -56,7 +56,7 @@ public class Parser {
 					}
 					
 					else {
-						System.out.println("ERROR: WRONG ARGUMENTS!");
+						System.out.println("ERROR: " + cmd + " requires 1 argument!");
 						return false;
 					}
 				}
@@ -70,7 +70,7 @@ public class Parser {
 					}
 					
 					else {
-						System.out.println("ERROR: WRONG ARGUMENTS!");
+						System.out.println("ERROR: " + cmd + " requires 2 arguments!");
 						return false;
 					}
 				}
