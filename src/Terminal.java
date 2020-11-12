@@ -87,4 +87,8 @@ public class Terminal {
 	public void pwd() {
 		System.out.println(pwd);
 	}
+	
+	public void exit() {
+		System.exit(0);
+	}
 }
