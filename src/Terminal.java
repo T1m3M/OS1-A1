@@ -5,7 +5,7 @@ import java.nio.file.Path;
 public class Terminal {
 	
 	private static String pwd = "C:\\"; // default
-	private static File dir = null;
+	private static File file = null;
 	
 	public void cd(String path) throws IOException {
 		
@@ -14,20 +14,20 @@ public class Terminal {
 			pwd = "C:\\";
 		
 		else {
-			dir = new File(path);
+			file = new File(path);
 
 			// Checking if path is relative or absolute
-			if( !(dir.isAbsolute()) )
-				dir = new File(pwd + "\\" + path);
+			if( !(file.isAbsolute()) )
+				file = new File(pwd + "\\" + path);
 
 			// Checking if it exists
-			if(dir.exists()) {
+			if(file.exists()) {
 				
 				// Checking if it's a directory and not a file
-				if(dir.isDirectory()) {
+				if(file.isDirectory()) {
 					
 					// canonical resolves .. in paths by default
-					pwd = dir.getCanonicalPath();
+					pwd = file.getCanonicalPath();
 					
 				} else {
 					System.out.println("ERROR: only directories can be accessed!");
@@ -50,16 +50,16 @@ public class Terminal {
 	
 	public void rm(String sourcePath) {
 		
-		dir = new File(pwd + sourcePath);
+		file = new File(pwd + sourcePath);
 
 		// Checking if it exists
-		if(dir.exists()) {
+		if(file.exists()) {
 			
 			// Checking if it's a directory and not a file
-			if(dir.isFile()) {
+			if(file.isFile()) {
 				
 				// Deleting the file
-				dir.delete();
+				file.delete();
 				
 			} else {
 				System.out.println("ERROR: only files can be deleted!");
