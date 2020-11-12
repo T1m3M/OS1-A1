@@ -9,6 +9,7 @@ public class Terminal {
 	
 	public void cd(String path) throws IOException {
 		
+		// checking if it's for home directory
 		if(path.equals("~"))
 			pwd = "C:\\";
 		
@@ -25,6 +26,7 @@ public class Terminal {
 				// Checking if it's a directory and not a file
 				if(dir.isDirectory()) {
 					
+					// canonical resolves .. in paths by default
 					pwd = dir.getCanonicalPath();
 					
 				} else {
