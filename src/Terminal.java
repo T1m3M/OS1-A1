@@ -50,6 +50,25 @@ public class Terminal {
 	
 	public void rm(String sourcePath) {
 		
+		dir = new File(pwd + sourcePath);
+
+		// Checking if it exists
+		if(dir.exists()) {
+			
+			// Checking if it's a directory and not a file
+			if(dir.isFile()) {
+				
+				// Deleting the file
+				dir.delete();
+				
+			} else {
+				System.out.println("ERROR: only files can be deleted!");
+			}
+			
+		} else {
+			System.out.println("ERROR: no such file or directory!");
+		}
+
 	}
 	
 	public void pwd() {
