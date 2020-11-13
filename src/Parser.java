@@ -147,7 +147,7 @@ public class Parser {
 					}
 					
 					else {
-						System.out.println("ERROR: " + cmd + " requires atleast 1 argument!");
+						System.out.println("ERROR: " + cmd + " requires at least 1 argument!");
 						return false;
 					}
 				}
