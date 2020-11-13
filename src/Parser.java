@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Parser {
 	String[] args;
@@ -26,7 +27,52 @@ public class Parser {
 	public boolean parse(String input) {
 		
 		// Split input to parse easily
-		spInput = input.split(" ");
+		// spInput = input.split(" ");
+		
+		ArrayList<String> elements = new ArrayList<String>();
+		
+		String part = "";
+		boolean openQuotes = false;
+		
+		for(int n=0; n < input.length(); n++) {
+			
+			// If there's a space and not inside quotes
+			if(input.charAt(n) == ' ' && !openQuotes) {
+				elements.add(part);
+				part = "";
+				continue;
+			}
+			
+			// If there's a start quote
+			else if (input.charAt(n) == '"' && !openQuotes) {
+				openQuotes = true;
+				continue;
+			}
+
+			// If there's an end quote
+			else if (input.charAt(n) == '"' && openQuotes) {
+				openQuotes = false;
+				elements.add(part);
+				part = "";
+				n += 1; // to escape the space after end quote
+				continue;
+			}
+			
+			// Store a character
+			part += input.charAt(n);
+			
+			// Checking if that's the last element
+			if (n == input.length() - 1)
+				elements.add(part);
+		}
+		
+		spInput = new String[elements.size()];
+		for(int x=0; x < elements.size(); x++)
+			spInput[x] = elements.get(x);
+		
+
+		/*for(int z=0; z < elements.size(); z++)
+			System.out.println(elements.get(z));*/
 		
 		// Is it a valid command?
 		for(int i=0; i < allCmds.length; i++) {
@@ -97,8 +143,11 @@ public class Parser {
 			}
 		}
 		
+		
+		
 		System.out.println("ERROR: UNKNOWN COMMAND!");
 		return false;
+		
 	}
 
 	public String getCmd() {return cmd;}
