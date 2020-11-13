@@ -22,7 +22,6 @@ public class Parser {
 			"clear",
 			"exit"};
 	
-	String[] spInput;
 	ArrayList<String> elements;
 	String part;
 	
@@ -78,11 +77,8 @@ public class Parser {
 				elements.add(part);
 		}
 		
-		spInput = new String[elements.size()];
-		for(int x=0; x < elements.size(); x++)
-			spInput[x] = elements.get(x);
-		
 
+		// ========== FOR TESTING ===========
 		for(int z=0; z < elements.size(); z++)
 			System.out.println(elements.get(z));
 		
@@ -90,14 +86,14 @@ public class Parser {
 		
 		// Is it a valid command?
 		for(int i=0; i < allCmds.length; i++) {
-			if(allCmds[i].equals(spInput[0])) {
-				cmd = spInput[0];
+			if(allCmds[i].equals(elements.get(0))) {
+				cmd = elements.get(0);
 				
 				// Are these valid arguments?
 				if(cmd.equals("ls") || cmd.equals("more") ||
 						cmd.equals("date") || cmd.equals("help") || cmd.equals("pwd") ||
 						cmd.equals("clear") || cmd.equals("exit")) {
-					if(spInput.length - 1 == 0)
+					if(elements.size() - 1 == 0)
 						return true;
 
 					else {
@@ -108,10 +104,10 @@ public class Parser {
 				
 				else if(cmd.equals("cd") || cmd.equals("|") ||
 						cmd.equals(">") || cmd.equals(">>") || cmd.equals("args")) {
-					if(spInput.length - 1 == 1) {
+					if(elements.size() - 1 == 1) {
 						// Storing arguments
 						args = new String[1];
-						args[0] = spInput[1];
+						args[0] = elements.get(1);
 						
 						return true;
 					}
@@ -123,11 +119,11 @@ public class Parser {
 				}
 				
 				else if(cmd.equals("cp") || cmd.equals("mv")) {
-					if(spInput.length - 1 == 2) {
+					if(elements.size() - 1 == 2) {
 						// Storing arguments
 						args = new String[2];
-						args[0] = spInput[1];
-						args[1] = spInput[2];
+						args[0] = elements.get(1);
+						args[1] = elements.get(2);
 						return true;
 					}
 					
@@ -139,12 +135,12 @@ public class Parser {
 				
 				else if(cmd.equals("cat") || cmd.equals("mkdir") || cmd.equals("rmdir") 
 						|| cmd.equals("rm")) {
-					if(spInput.length - 1 >= 1) {
-						args = new String[spInput.length - 1];
+					if(elements.size() - 1 >= 1) {
+						args = new String[elements.size() - 1];
 						
 						// Storing arguments
-						for(int j=0; j < spInput.length - 1; j++)
-							args[j] = spInput[j+1];
+						for(int j=0; j < elements.size() - 1; j++)
+							args[j] = elements.get(j+1);
 
 						return true;
 					}
