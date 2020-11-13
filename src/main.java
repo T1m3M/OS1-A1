@@ -61,6 +61,48 @@ public class main {
 				case "|":
 					terminal.pipe(myArgs);
 					break;
+
+				// ================ TAWATY ================
+				case ">":
+					terminal.redirect(myArgs[0]);
+					break;
+					
+				case ">>":
+					terminal.redirectAppend(myArgs[0]);
+					break;
+					
+				case "mv":
+					terminal.mv(myArgs[0], myArgs[1]);
+					break;
+					
+				case "args":
+					terminal.args(myArgs[0]);
+					break;
+					
+				case "date":
+					terminal.date();
+					break;
+
+				// ================ BAHAA ================
+				case "cp":
+					terminal.cp(myArgs[0], myArgs[1]);
+					break;
+					
+				case "mkdir":
+					terminal.mkdir(myArgs);
+					break;
+					
+				case "rmdir":
+					terminal.rmdir(myArgs);
+					break;
+					
+				case "help":
+					terminal.help();
+					break;
+					
+				case "clear":
+					terminal.clear();
+					break;
 				}
 				
 				// Checking if there's an operator & Parsing the next command
