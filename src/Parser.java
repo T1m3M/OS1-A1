@@ -23,16 +23,16 @@ public class Parser {
 			"exit"};
 	
 	String[] spInput;
+	ArrayList<String> elements;
+	String part;
+	boolean openQuotes;
 
 	public boolean parse(String input) {
 		
-		// Split input to parse easily
-		// spInput = input.split(" ");
+		elements = new ArrayList<String>();
 		
-		ArrayList<String> elements = new ArrayList<String>();
-		
-		String part = "";
-		boolean openQuotes = false;
+		part = "";
+		openQuotes = false;
 		
 		for(int n=0; n < input.length(); n++) {
 			
