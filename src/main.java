@@ -2,6 +2,9 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class main {
+	
+	// Global variable to change command behavior if it has operator
+	public static boolean hasOperator = false;
 
 	public static void main(String[] args) throws IOException {
 		
@@ -27,6 +30,8 @@ public class main {
 				// getting the command and its arguments values
 				myCmd = parser.getCmd();
 				myArgs = parser.getArguments();
+				
+				hasOperator = parser.opExist();
 				
 				// Calling the specified terminal command
 				switch(myCmd) {
@@ -56,8 +61,9 @@ public class main {
 				}
 				
 				// Checking if there's an operator & Parsing the next command
-				if(parser.opExist())
+				if(hasOperator) {
 					userInput = userInput.substring(parser.getNextCmdPos());
+				}
 				else {
 					System.out.print("$ ");
 					userInput = input.nextLine();
