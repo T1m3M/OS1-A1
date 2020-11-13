@@ -20,7 +20,10 @@ public class Parser {
 			"help",
 			"pwd",
 			"clear",
-			"exit"};
+			"exit",
+			"|",
+			">",
+			">>"};
 	
 	ArrayList<String> elements;
 	String part;
