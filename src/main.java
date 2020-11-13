@@ -10,10 +10,12 @@ public class main {
 		
 		String myCmd;
 		String[] myArgs;
+
+		Scanner input = null;
 		
 		while(true) {
 			// Taking user input
-			Scanner input = new Scanner(System.in);
+			input = new Scanner(System.in);
 			System.out.print("$ ");
 			
 			// checking if command and arguments are valid
@@ -49,7 +51,6 @@ public class main {
 					terminal.exit();
 					break;
 				}
-				
 				
 			}
 			
