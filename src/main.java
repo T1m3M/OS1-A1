@@ -40,7 +40,7 @@ public class main {
 					break;
 					
 				case "rm":
-					terminal.rm(myArgs[0]);
+					terminal.rm(myArgs);
 					break;
 					
 				case "pwd":
