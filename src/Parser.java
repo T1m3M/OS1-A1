@@ -63,8 +63,8 @@ public class Parser {
 				continue;
 			}
 			
-			// If there's an operator at the end of a command
-			else if ( n != 0 && (input.charAt(n) == '|' || input.charAt(n) == '>')) {
+			// If there's an operator only at the end of a command
+			else if ( (n != 0 && n != 1) && (input.charAt(n) == '|' || input.charAt(n) == '>') ) {
 				opExist = true;
 				nextCmdPos = n; // storing the next command position
 				break;
