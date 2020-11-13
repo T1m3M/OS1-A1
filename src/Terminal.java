@@ -137,7 +137,7 @@ public class Terminal {
 		System.exit(0);
 	}
 	
-	/***************** operators *****************/
+	/***************** start operators *****************/
 	public void pipe(String[] args) {
 		
 		switch(args[0]) {
@@ -149,6 +149,7 @@ public class Terminal {
 		// Reseting standard input
 		stdin = new ArrayList<Byte>();
 	}
+	
 	
 	// ================ TAWATY ================
 	public void redirect(String sourcePath) {
@@ -166,8 +167,43 @@ public class Terminal {
 		// Reseting standard input
 		stdin = new ArrayList<Byte>();
 	}
+	/***************** end operators *****************/
 	
 	public void more() {
+		// Code Here
+	}
+	
+	public void mv(String sourcePath, String destinationPath) {
+		// Code Here
+	}
+	
+	public void args(String command) {
+		// Code Here
+	}
+	
+	public void date() {
+		// Code Here
+	}
+	
+
+	// ================ BAHAA ================
+	public void cp(String sourcePath, String destinationPath) {
+		// Code Here
+	}
+	
+	public void mkdir(String[] paths) {
+		// Code Here
+	}
+	
+	public void rmdir(String[] paths) {
+		// Code Here
+	}
+	
+	public void help() {
+		// Code Here
+	}
+	
+	public void clear() {
 		// Code Here
 	}
 }
