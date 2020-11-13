@@ -14,14 +14,12 @@ public class main {
 		String myCmd;
 		String[] myArgs;
 
-		Scanner input = null;
+		Scanner input = new Scanner(System.in);
 		String userInput;
 		
 		while(true) {
 			// Taking user input
-			input = new Scanner(System.in);
 			System.out.print("$ ");
-			
 			userInput = input.nextLine();
 			
 			// checking if command and arguments are valid
@@ -56,6 +54,7 @@ public class main {
 					break;
 					
 				case "exit":
+					input.close();
 					terminal.exit();
 					break;
 					
@@ -68,9 +67,9 @@ public class main {
 				if(hasOperator) {
 					userInput = userInput.substring(parser.getNextCmdPos());
 				}
+				
 				else {
-					System.out.print("$ ");
-					userInput = input.nextLine();
+					break;
 				}
 			}
 			
