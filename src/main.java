@@ -60,7 +60,7 @@ public class main {
 					break;
 					
 				case "|":
-					terminal.pipe();
+					terminal.pipe(myArgs);
 					break;
 				}
 				

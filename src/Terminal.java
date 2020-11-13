@@ -137,7 +137,7 @@ public class Terminal {
 		System.exit(0);
 	}
 	
-	public void pipe() {
+	public void pipe(String[] args) {
 		
 	}
 }
