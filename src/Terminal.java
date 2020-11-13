@@ -82,6 +82,8 @@ public class Terminal {
 					System.out.println(data);
 				}
 				
+				reader.close();
+				
 			} else {
 				System.out.println("ERROR: " + file.getName() + " file doesn't exists!");
 			}
