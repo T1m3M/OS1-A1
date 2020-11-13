@@ -12,14 +12,17 @@ public class main {
 		String[] myArgs;
 
 		Scanner input = null;
+		String userInput;
 		
 		while(true) {
 			// Taking user input
 			input = new Scanner(System.in);
 			System.out.print("$ ");
 			
+			userInput = input.nextLine();
+			
 			// checking if command and arguments are valid
-			if( parser.parse( input.nextLine() ) ) {
+			while( parser.parse(userInput) ) {
 				
 				// getting the command and its arguments values
 				myCmd = parser.getCmd();
@@ -52,6 +55,13 @@ public class main {
 					break;
 				}
 				
+				// Checking if there's an operator & Parsing the next command
+				if(parser.opExist())
+					userInput = userInput.substring(parser.getNextCmdPos());
+				else {
+					System.out.print("$ ");
+					userInput = input.nextLine();
+				}
 			}
 			
 		}
