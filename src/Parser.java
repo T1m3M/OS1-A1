@@ -28,6 +28,8 @@ public class Parser {
 	
 	boolean openQuotes;
 	boolean opExist; // for operators
+	
+	int nextCmdPos;
 
 	public boolean parse(String input) {
 		
@@ -64,6 +66,7 @@ public class Parser {
 			// If there's an operator
 			else if (input.charAt(n) == '|' || input.charAt(n) == '>') {
 				opExist = true;
+				nextCmdPos = n; // storing the next command position
 				break;
 			}
 			
@@ -164,6 +167,8 @@ public class Parser {
 
 	public String getCmd() {return cmd;}
 	public String[] getArguments() {return args;}
+
 	public boolean opExist() {return opExist;}
+	public int getNextCmdPos() {return nextCmdPos;}
 	
 }
