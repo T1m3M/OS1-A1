@@ -137,7 +137,37 @@ public class Terminal {
 		System.exit(0);
 	}
 	
+	/***************** operators *****************/
 	public void pipe(String[] args) {
 		
+		switch(args[0]) {
+		case "more":
+			more();
+			break;
+		}
+		
+		// Reseting standard input
+		stdin = new ArrayList<Byte>();
+	}
+	
+	// ================ TAWATY ================
+	public void redirect(String sourcePath) {
+		
+		// Code Here ">" operator
+		
+		// Reseting standard input
+		stdin = new ArrayList<Byte>();
+	}
+	
+	public void redirectAppend(String sourcePath) {
+		
+		// Code Here ">>" operator
+		
+		// Reseting standard input
+		stdin = new ArrayList<Byte>();
+	}
+	
+	public void more() {
+		// Code Here
 	}
 }
