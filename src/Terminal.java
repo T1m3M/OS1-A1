@@ -1,12 +1,14 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Terminal {
 	
 	private static String pwd = "C:\\"; // default
 	private static File file = null;
+	private static List<Byte> stdin = new ArrayList<Byte>();
 	
 	public void cd(String path) throws IOException {
 		
@@ -58,9 +60,8 @@ public class Terminal {
         }
 	}
 	
-	public void cat(String[] paths) throws FileNotFoundException {
-		Scanner reader = null;
-		String data;
+	public void cat(String[] paths) throws IOException {
+		byte[] fileContent;
 		
 		// Iterating through each file
 		for(int i=0; i < paths.length; i++) {
@@ -74,15 +75,21 @@ public class Terminal {
 			// Checking if it's a file and it exists
 			if(file.exists() && file.isFile()) {
 				
-				reader = new Scanner(file);
+				fileContent = Files.readAllBytes(file.toPath());
+
 				
-				// Reading the file line by line and printing
-				while(reader.hasNextLine()) {
-					data = reader.nextLine();
-					System.out.println(data);
+				// Iterates through each bytes
+				for(int j=0; j < fileContent.length; j++) {
+					
+					// If there's an operator redirect to stdin
+					if(main.hasOperator)
+						stdin.add(fileContent[j]);
+					
+					// Printing each char to the screen
+					else {
+						System.out.print((char)(fileContent[j] & 0xFF));	
+					}
 				}
-				
-				reader.close();
 				
 			} else {
 				System.out.println("ERROR: " + file.getName() + " file doesn't exists!");
