@@ -90,25 +90,27 @@ public class Terminal {
 		}
 	}
 	
-	public void rm(String sourcePath) {
-		
-		file = new File(pwd + sourcePath);
+	public void rm(String[] paths) {
 
-		// Checking if it exists
-		if(file.exists()) {
-			
-			// Checking if it's a directory and not a file
-			if(file.isFile()) {
+		for(int i=0; i < paths.length; i++) {
+			file = new File(pwd + "\\" + paths[i]);
+	
+			// Checking if it exists
+			if(file.exists()) {
 				
-				// Deleting the file
-				file.delete();
+				// Checking if it's a directory and not a file
+				if(file.isFile()) {
+					
+					// Deleting the file
+					file.delete();
+					
+				} else {
+					System.out.println("ERROR: only files can be deleted!");
+				}
 				
 			} else {
-				System.out.println("ERROR: only files can be deleted!");
+				System.out.println("ERROR: no such file or directory!");
 			}
-			
-		} else {
-			System.out.println("ERROR: no such file or directory!");
 		}
 
 	}
