@@ -80,8 +80,10 @@ public class Parser {
 			spInput[x] = elements.get(x);
 		
 
-		/*for(int z=0; z < elements.size(); z++)
-			System.out.println(elements.get(z));*/
+		for(int z=0; z < elements.size(); z++)
+			System.out.println(elements.get(z));
+		
+		System.out.println(opExist);
 		
 		// Is it a valid command?
 		for(int i=0; i < allCmds.length; i++) {
@@ -161,5 +163,6 @@ public class Parser {
 
 	public String getCmd() {return cmd;}
 	public String[] getArguments() {return args;}
+	public boolean opExist() {return opExist;}
 	
 }
