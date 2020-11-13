@@ -25,7 +25,9 @@ public class Parser {
 	String[] spInput;
 	ArrayList<String> elements;
 	String part;
+	
 	boolean openQuotes;
+	boolean opExist; // for operators
 
 	public boolean parse(String input) {
 		
@@ -33,6 +35,7 @@ public class Parser {
 		
 		part = "";
 		openQuotes = false;
+		opExist = false;
 		
 		for(int n=0; n < input.length(); n++) {
 			
@@ -56,6 +59,12 @@ public class Parser {
 				part = "";
 				n += 1; // to escape the space after end quote
 				continue;
+			}
+			
+			// If there's an operator
+			else if (input.charAt(n) == '|' || input.charAt(n) == '>') {
+				opExist = true;
+				break;
 			}
 			
 			// Store a character
