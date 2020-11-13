@@ -91,7 +91,7 @@ public class Parser {
 				cmd = spInput[0];
 				
 				// Are these valid arguments?
-				if(cmd.equals("ls") || cmd.equals("more") || cmd.equals("args") ||
+				if(cmd.equals("ls") || cmd.equals("more") ||
 						cmd.equals("date") || cmd.equals("help") || cmd.equals("pwd") ||
 						cmd.equals("clear") || cmd.equals("exit")) {
 					if(spInput.length - 1 == 0)
@@ -103,8 +103,8 @@ public class Parser {
 					}
 				}
 				
-				else if(cmd.equals("cd") || cmd.equals("mkdir") ||
-						cmd.equals("rmdir") || cmd.equals("rm")) {
+				else if(cmd.equals("cd") || cmd.equals("|") ||
+						cmd.equals(">") || cmd.equals(">>") || cmd.equals("args")) {
 					if(spInput.length - 1 == 1) {
 						// Storing arguments
 						args = new String[1];
@@ -134,7 +134,8 @@ public class Parser {
 					}
 				}
 				
-				else if(cmd.equals("cat")) {
+				else if(cmd.equals("cat") || cmd.equals("mkdir") || cmd.equals("rmdir") 
+						|| cmd.equals("rm")) {
 					if(spInput.length - 1 >= 1) {
 						args = new String[spInput.length - 1];
 						
