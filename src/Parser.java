@@ -80,13 +80,6 @@ public class Parser {
 				elements.add(part);
 		}
 		
-
-		// ========== FOR TESTING ===========
-		for(int z=0; z < elements.size(); z++)
-			System.out.println(elements.get(z));
-		
-		System.out.println(opExist);
-		
 		// Is it a valid command?
 		for(int i=0; i < allCmds.length; i++) {
 			if(allCmds[i].equals(elements.get(0))) {

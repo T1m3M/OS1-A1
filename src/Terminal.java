@@ -97,11 +97,7 @@ public class Terminal {
 			
 			
 		}
-
-		// ========== FOR TESTING ===========
-		System.out.println("STDIN VALUES : ============");
-		for(int j=0; j < stdin.size(); j++)
-				System.out.print((char)(stdin.get(j) & 0xFF));
+		
 	}
 	
 	public void rm(String[] paths) {
