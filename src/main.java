@@ -58,6 +58,10 @@ public class main {
 				case "exit":
 					terminal.exit();
 					break;
+					
+				case "|":
+					terminal.pipe();
+					break;
 				}
 				
 				// Checking if there's an operator & Parsing the next command
