@@ -103,7 +103,11 @@ public class Terminal {
 	public void rm(String[] paths) {
 
 		for(int i=0; i < paths.length; i++) {
-			file = new File(pwd + "\\" + paths[i]);
+			file = new File(paths[i]);
+			
+			// Resolving relative files
+			if( !(file.isAbsolute()) )
+				file = new File(pwd + "\\" + paths[i]);
 	
 			// Checking if it exists
 			if(file.exists()) {
