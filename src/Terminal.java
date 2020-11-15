@@ -187,7 +187,8 @@ public class Terminal {
 	
 
 	// ================ BAHAA ================
-		public static void cp(String sourcePath, String destinationPath) {
+	public static void cp(String sourcePath, String destinationPath) {
+		
 		File Source = new File(sourcePath);
 		File Destination = new File(destinationPath);
 		
@@ -197,67 +198,65 @@ public class Terminal {
 		if( !(Destination.isAbsolute()) )
 			Destination = new File(pwd + "\\" + destinationPath);	
 
-		   if(Source.exists())
-		   {
-			   try {
-					Files.copy(Source.toPath(),Destination.toPath());
-				} catch (IOException e) {
-					System.out.println("Error: file/directory already exists!");
-				}	 
+		if(Source.exists())
+		{
+			try {
+				Files.copy(Source.toPath(), Destination.toPath());
+			} catch (IOException e) {
+				System.out.println("Error: file/directory already exists!");
+			}	 
 			   
-		   }
+		}
 		
-				
-				
+		else {
+			System.out.println("Error: No such file or directory!");
+		}
+					
 	}
 	
 	public void mkdir(String[] paths) {
 		
 		for(int i=0; i < paths.length; i++) 
 		{
-			 boolean flag = true;	
 			file = new File(paths[i]);
-			 if( !(file.isAbsolute()) )
-			 {
-					file = new File(pwd + "\\" + paths[i]);
-			 }
-		   	if(!file.exists()) 
-			{
+			
+			if( !(file.isAbsolute()) )
+				file = new File(pwd + "\\" + paths[i]);
+
+		   	if( !file.exists() )
 		   		file.mkdirs();
-		   		flag = false;
-			}
+		   	
 		   	else
 		   	{
-		   		System.out.println("Dirictor already exists.");
+		   		System.out.println("Error: Directory already exists!");
 		   	}
 		}			
 		
 	}
 	
 	public void rmdir(String[] paths) {
-		for(int i=0; i < paths.length; i++) {	
+		for(int i=0; i < paths.length; i++) {
+			
 			file = new File(paths[i]);
+			
 			 if( !(file.isAbsolute()) )
-			 {
-					file = new File(pwd + "\\" + paths[i]);
-			 }
+				 file = new File(pwd + "\\" + paths[i]);
+			 
 		   	if(file.exists()) 
 			{
 		   		if(file.isDirectory())
-		   		{
-		   			file.delete();	
-		   		}
+		   			file.delete();
 		   		
 			}
 		   	else
 		   	{
-		   		System.out.println("This directory already not exists.");
+		   		System.out.println("Error: This directory doesn't exists!");
 		   	}
 		}
 	}
 	
 	public void help() {
-            System.out.println("cd        -     change the directory.");
+		System.out.println("cd        -     change the directory.");
 	    System.out.println("ls        -     view the contents of a directory.");
 	    System.out.println("cp        -     copy files from the current directory to a different directory.");
 	    System.out.println("cat       -     Prints all contents in files.");
@@ -271,30 +270,18 @@ public class Terminal {
 	    System.out.println("pwd       -     return an absolute (full) path.");
 	    System.out.println("clear     -     Clear console.");
 	    System.out.println("exit      -     Stop all.");
-	    
-	
-		
 	}
-	
 
-		/*
+	/*
 	 * The Eclipse Console does not support the interpretation of the clear screen and other ANSI escape sequences which would be required for that. 
 	 * Also, the ANSI Escape in Console Eclipse plug-in does not support clear screen.
 	 */
 
-		public void clear() {
-		  
-		    for(int i=0;i<50;++i)
-		    {
+	public void clear() {
+		
+		for(int i=0;i<50;++i)
 		    	System.out.println();
-		    }
-			
-			///Thread.sleep(3000); 
-			//System.out.flush();
-		    ///final static String ESC = "\033[";
-		    ///System.out.print(ESC + "2J"); 
-			
-		    
-		   } 
+		
+	} 
 	
 }
