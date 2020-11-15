@@ -196,24 +196,20 @@ public class Terminal {
 	
 		if( !(Destination.isAbsolute()) )
 			Destination = new File(pwd + "\\" + destinationPath);	
-			
-		
-		System.out.println(Source.getPath());
-		System.out.println(Destination.getPath());
-		
+
 		   if(Source.exists())
 		   {
 			   try {
-					
-					///System.out.println("correct fuction");
 					Files.copy(Source.toPath(),Destination.toPath());
 				} catch (IOException e) {
-					System.out.println("ERROR!!!");
-				}	    
-		   }				
+					System.out.println("Error: file/directory already exists!");
+				}	 
+			   
+		   }
+		
+				
+				
 	}
-
-
 	
 	public void mkdir(String[] paths) {
 		
@@ -281,6 +277,11 @@ public class Terminal {
 	}
 	
 
+		/*
+	 * The Eclipse Console does not support the interpretation of the clear screen and other ANSI escape sequences which would be required for that. 
+	 * Also, the ANSI Escape in Console Eclipse plug-in does not support clear screen.
+	 */
+
 		public void clear() {
 		  
 		    for(int i=0;i<50;++i)
@@ -288,6 +289,12 @@ public class Terminal {
 		    	System.out.println();
 		    }
 			
+			///Thread.sleep(3000); 
+			//System.out.flush();
+		    ///final static String ESC = "\033[";
+		    ///System.out.print(ESC + "2J"); 
+			
+		    
 		   } 
 	
 }
