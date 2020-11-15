@@ -187,23 +187,91 @@ public class Terminal {
 	
 
 	// ================ BAHAA ================
-	public void cp(String sourcePath, String destinationPath) {
-		// Code Here
+		public static void cp(String sourcePath, String destinationPath) {
+		File Source = new File(sourcePath);
+		File Destination = new File(destinationPath);
+		try {
+			Files.copy(Source.toPath(), Destination.toPath());
+		} catch (IOException e) {
+			System.out.println("ERORR!!");
+		}
+		
+		
 	}
 	
 	public void mkdir(String[] paths) {
-		// Code Here
+		
+		for(int i=0; i < paths.length; i++) 
+		{
+			 boolean flag = true;	
+			file = new File(paths[i]);
+			 if( !(file.isAbsolute()) )
+			 {
+					file = new File(pwd + "\\" + paths[i]);
+			 }
+		   	if(!file.exists()) 
+			{
+		   		file.mkdirs();
+		   		flag = false;
+			}
+		   	else
+		   	{
+		   		System.out.println("Dirictor already exists.");
+		   	}
+		}			
+		
 	}
 	
 	public void rmdir(String[] paths) {
-		// Code Here
+		for(int i=0; i < paths.length; i++) {	
+			file = new File(paths[i]);
+			 if( !(file.isAbsolute()) )
+			 {
+					file = new File(pwd + "\\" + paths[i]);
+			 }
+		   	if(file.exists()) 
+			{
+		   		if(file.isDirectory())
+		   		{
+		   			file.delete();	
+		   		}
+		   		
+			}
+		   	else
+		   	{
+		   		System.out.println("This directory already not exists.");
+		   	}
+		}
 	}
 	
 	public void help() {
-		// Code Here
+            System.out.println("cd        -     change the directory.");
+	    System.out.println("ls        -     view the contents of a directory.");
+	    System.out.println("cp        -     copy files from the current directory to a different directory.");
+	    System.out.println("cat       -     Prints all contents in files.");
+	    System.out.println("mkdir	  -     make a new directory.");
+	    System.out.println("rmdir	  -     delete a directory.");
+	    System.out.println("mv        -     move files, although it can also be used to rename files.");
+	    System.out.println("rm        -     delete directories and the contents within them.");
+	    System.out.println("args      -     List all command arguments.");
+	    System.out.println("date      -     Current date/time.");
+	    System.out.println("help      -     Display all command to help you.");
+	    System.out.println("pwd       -     return an absolute (full) path.");
+	    System.out.println("clear     -     Clear console.");
+	    System.out.println("exit      -     Stop all.");
+	    
+	
+		
 	}
 	
-	public void clear() {
-		// Code Here
-	}
+
+		public void clear() {
+		  
+		    for(int i=0;i<50;++i)
+		    {
+		    	System.out.println();
+		    }
+			
+		   } 
+	
 }
