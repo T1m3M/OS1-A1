@@ -190,14 +190,30 @@ public class Terminal {
 		public static void cp(String sourcePath, String destinationPath) {
 		File Source = new File(sourcePath);
 		File Destination = new File(destinationPath);
-		try {
-			Files.copy(Source.toPath(), Destination.toPath());
-		} catch (IOException e) {
-			System.out.println("ERORR!!");
-		}
 		
+		if( !(Source.isAbsolute()) )
+			Source = new File(pwd + "\\" + sourcePath );
+	
+		if( !(Destination.isAbsolute()) )
+			Destination = new File(pwd + "\\" + destinationPath);	
+			
 		
+		System.out.println(Source.getPath());
+		System.out.println(Destination.getPath());
+		
+		   if(Source.exists())
+		   {
+			   try {
+					
+					///System.out.println("correct fuction");
+					Files.copy(Source.toPath(),Destination.toPath());
+				} catch (IOException e) {
+					System.out.println("ERROR!!!");
+				}	    
+		   }				
 	}
+
+
 	
 	public void mkdir(String[] paths) {
 		
